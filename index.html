@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Survey</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 15px; }
+        .container { background: white; max-width: 600px; margin: auto; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; font-size: 24px; margin-bottom: 5px; }
+        p { color: #666; font-size: 14px; }
+        .section-header { background: #0097a7; color: white; padding: 10px; margin-top: 20px; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 5px; }
+        th { font-size: 12px; text-align: center; padding: 10px; color: #555; }
+        td { padding: 8px; border-bottom: 1px solid #eee; font-size: 14px; }
+        .radio-cell { text-align: center; }
+        textarea, input { width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .submit-btn { background: #0097a7; color: white; border: none; padding: 15px; width: 100%; margin-top: 20px; font-size: 18px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div id="welcome-screen" style="
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, #0097a7, #00bcd4);
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    color: white; z-index: 9999; text-align: center;
+    transition: opacity 0.5s ease-on-out;">
+    
+    <div style="font-size: 60px; margin-bottom: 20px;">??</div>
+    <h1 style="margin: 0; font-size: 32px;">Welcome to CHEEZ-US</h1>
+    <p style="font-size: 18px; margin-top: 10px; opacity: 0.9;">Khayal Apka, Zaiqa Hamara!</p>
+    
+    <button onclick="startSurvey()" style="
+        margin-top: 30px;
+        padding: 15px 40px;
+        background: white;
+        color: #0097a7;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        Start Feedback
+    </button>
+</div>
+
+<div id="main-survey-container" style="display: none;">
+    </div>
+
+<script>
+    // Ye function Welcome screen ko khatam karke Survey dikhayega
+    function startSurvey() {
+        // Welcome screen ko fade out karna
+        const welcome = document.getElementById('welcome-screen');
+        welcome.style.opacity = '0';
+        
+        setTimeout(() => {
+            welcome.style.display = 'none';
+            // Survey container ko dikhana
+            document.getElementById('main-survey-container').style.display = 'block';
+            // Call button wala section bhi display ho jayega
+        }, 500);
+    }
+</script>
+
+<div class="container">
+    <h1>Thank You For dining with us!</h1>
+    <p>Please take a moment to fill out the survey below. Your feedback will help us improve so we can serve you better. We thank you for your business!</p>
+
+    <form id="surveyForm">
+        <div class="section-header">Service</div>
+        <table>
+            <tr> <th></th> <th>Excellent</th> <th>Good</th> <th>Fair</th> <th>Poor</th> </tr>
+            <tr> <td>Friendliness</td> 
+                 <td class="radio-cell"><input type="radio" name="friendliness" value="Excellent"></td>
+                 <td class="radio-cell"><input type="radio" name="friendliness" value="Good"></td>
+                 <td class="radio-cell"><input type="radio" name="friendliness" value="Fair"></td>
+                 <td class="radio-cell"><input type="radio" name="friendliness" value="Poor"></td>
+            </tr>
+            <tr> <td>Speed</td> 
+                 <td class="radio-cell"><input type="radio" name="speed" value="Excellent"></td>
+                 <td class="radio-cell"><input type="radio" name="speed" value="Good"></td>
+                 <td class="radio-cell"><input type="radio" name="speed" value="Fair"></td>
+                 <td class="radio-cell"><input type="radio" name="speed" value="Poor"></td>
+            </tr>
+		  <tr> <td>Knowledgeability</td> 
+                 <td class="radio-cell"><input type="radio" name="Knowledgeability" value="Excellent"></td>
+                 <td class="radio-cell"><input type="radio" name="Knowledgeability" value="Good"></td>
+                 <td class="radio-cell"><input type="radio" name="Knowledgeability" value="Fair"></td>
+                 <td class="radio-cell"><input type="radio" name="Knowledgeability" value="Poor"></td>
+            </tr>
+
+        </table>
+
+        <div class="section-header">Food</div>
+        <table>
+            <tr> <td>Quality</td> 
+                 <td class="radio-cell"><input type="radio" name="quality" value="Excellent"></td>
+                 <td class="radio-cell"><input type="radio" name="quality" value="Good"></td>
+                 <td class="radio-cell"><input type="radio" name="quality" value="Fair"></td>
+                 <td class="radio-cell"><input type="radio" name="quality" value="Poor"></td>
+            </tr>
+		  <tr> <td>Appearance</td> 
+                 <td class="radio-cell"><input type="radio" name="Appearance" value="Excellent"></td>
+                 <td class="radio-cell"><input type="radio" name="Appearance" value="Good"></td>
+                 <td class="radio-cell"><input type="radio" name="Appearance" value="Fair"></td>
+                 <td class="radio-cell"><input type="radio" name="Appearance" value="Poor"></td>
+            </tr>
+
+            <tr> <td>Taste</td> 
+                 <td class="radio-cell"><input type="radio" name="taste" value="Excellent"></td>
+                 <td class="radio-cell"><input type="radio" name="taste" value="Good"></td>
+                 <td class="radio-cell"><input type="radio" name="taste" value="Fair"></td>
+                 <td class="radio-cell"><input type="radio" name="taste" value="Poor"></td>
+            </tr>
+        </table>
+
+        <div class="section-header">Atmosphere</div>
+        <table>
+            <tr> <td>Cleanliness</td> 
+                 <td class="radio-cell"><input type="radio" name="cleanliness" value="Excellent"></td>
+                 <td class="radio-cell"><input type="radio" name="cleanliness" value="Good"></td>
+                 <td class="radio-cell"><input type="radio" name="cleanliness" value="Fair"></td>
+                 <td class="radio-cell"><input type="radio" name="cleanliness" value="Poor"></td>
+            </tr>
+<tr> <td>Comfort</td> 
+                 <td class="radio-cell"><input type="radio" name="Comfort" value="Excellent"></td>
+                 <td class="radio-cell"><input type="radio" name="Comfort" value="Good"></td>
+                 <td class="radio-cell"><input type="radio" name="Comfort" value="Fair"></td>
+                 <td class="radio-cell"><input type="radio" name="Comfort" value="Poor"></td>
+            </tr>
+<tr> <td>Ambiance</td> 
+                 <td class="radio-cell"><input type="radio" name="Ambiance" value="Excellent"></td>
+                 <td class="radio-cell"><input type="radio" name="Ambiance" value="Good"></td>
+                 <td class="radio-cell"><input type="radio" name="Ambiance" value="Fair"></td>
+                 <td class="radio-cell"><input type="radio" name="Ambiance" value="Poor"></td>
+            </tr>
+
+        </table>
+
+        <p><b>Would you recommend us to your friends and family?</b></p>
+        <input type="text" id="recommend" placeholder="Why or why not?">
+
+        <p><b>Any Additional comments or Suggestions?:</b></p>
+        <textarea id="comments" rows="3"></textarea>
+
+        <p><b>Your Information (Optional):</b></p>
+        <input type="text" id="custName" placeholder="Name">
+        <input type="text" id="custPhone" placeholder="Phone Number">
+
+        <button type="button" class="submit-btn" onclick="submitSurvey()">Submit Feedback</button>
+    </form>
+</div>
+<div 
+style="margin-top: 20px; text-align: center;">
+    <p style="font-size: 14px; color: #666;">Koi masla hai? Humain call karein:</p>
+    <a href="tel:+923339375652" style="
+        display: inline-block;
+        background-color: #2ecc71;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+        font-size: 16px;
+    ">
+        📞 Call Now: 0333-9375652
+    </a>
+</div>
+
+<script>
+    function submitSurvey() {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyU9xz3jpW7skyscwZ4Ni41FVIdeYxMza61EVW1HjO-_ovvTaBxT5Yve6ThpGY5Lv5coA/exec';
+        
+        const formData = {
+            friendliness: document.querySelector('input[name="friendliness"]:checked')?.value || "N/A",
+            speed: document.querySelector('input[name="speed"]:checked')?.value || "N/A",
+            quality: document.querySelector('input[name="quality"]:checked')?.value || "N/A",
+            taste: document.querySelector('input[name="taste"]:checked')?.value || "N/A",
+            cleanliness: document.querySelector('input[name="cleanliness"]:checked')?.value || "N/A",
+            recommend: document.getElementById('recommend').value,
+            comments: document.getElementById('comments').value,
+            name: document.getElementById('custName').value,
+            phone: document.getElementById('custPhone').value
+        };
+
+        fetch(scriptURL, { method: 'POST', body: JSON.stringify(formData) })
+        .then(res => {
+            alert("Thank you! Data saved & Email sent.");
+            location.reload();
+        })
+        .catch(err => alert("Error saving data."));
+    }
+</script>
+
+</body>
+</html>
