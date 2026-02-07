@@ -1,51 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Survey</title>
+    <title>Zaiqa Feedback & Reports</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 15px; }
-        .container { background: white; max-width: 600px; margin: auto; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1 { color: #333; font-size: 24px; margin-bottom: 5px; }
-        p { color: #666; font-size: 14px; }
-        .section-header { background: #0097a7; color: white; padding: 10px; margin-top: 20px; font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; margin-top: 5px; }
-        th { font-size: 12px; text-align: center; padding: 10px; color: #555; }
-        td { padding: 8px; border-bottom: 1px solid #eee; font-size: 14px; }
-        .radio-cell { text-align: center; }
-        textarea, input { width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        .submit-btn { background: #0097a7; color: white; border: none; padding: 15px; width: 100%; margin-top: 20px; font-size: 18px; border-radius: 5px; cursor: pointer; }
+        :root { --primary: #0097a7; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; text-align: center; }
+        
+        /* Welcome Screen */
+        #welcome {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: linear-gradient(45deg, #0097a7, #006064);
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; color: white; z-index: 1000;
+        }
+
+        .btn-main {
+            padding: 15px 40px; border-radius: 50px; border: none; 
+            font-weight: bold; cursor: pointer; margin: 10px; width: 250px; font-size: 16px;
+        }
+
+        /* Report Section */
+        #reportSection { display: none; padding: 20px; }
+        iframe { width: 100%; height: 500px; border: 1px solid #ccc; border-radius: 10px; }
+
+        /* Form Container */
+        .container { max-width: 600px; margin: 20px auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); display: block; }
+        #feedbackFormContainer { display: none; }
     </style>
 </head>
 <body>
 
-<div id="welcome-screen" style="
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(135deg, #0097a7, #00bcd4);
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    color: white; z-index: 9999; text-align: center;
-    transition: opacity 0.5s ease-on-out;">
+<div id="welcome">
+    <div style="font-size: 60px;">🍽️</div>
+    <h1>Zaiqa Restaurant</h1>
+    <p>Apka Feedback Hamari Taqat Hai</p>
     
-    <div style="font-size: 60px; margin-bottom: 20px;">??</div>
-    <h1 style="margin: 0; font-size: 32px;">Welcome to CHEEZ-US</h1>
-    <p style="font-size: 18px; margin-top: 10px; opacity: 0.9;">Khayal Apka, Zaiqa Hamara!</p>
-    </div>
-    <button onclick="startSurvey()" style="
-        margin-top: 30px;
-        padding: 15px 40px;
-        background: white;
-        color: #0097a7;
-        border: none;
-        border-radius: 50px;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-        Start Feedback
-    </button>
+    <button class="btn-main" style="background: white; color: var(--primary);" onclick="showSection('form')">Naya Feedback Likhein</button>
+    <button class="btn-main" style="background: transparent; color: white; border: 2px solid white;" onclick="showSection('report')">Purana Record Dekhein</button>
 </div>
+
+<div id="feedbackFormContainer" class="container">
+    <h2>Feedback Form</h2>
+    <p>Yahan apni raye darj karein...</p>
+    <button class="btn-main" style="background: var(--primary); color:white;" onclick="location.reload()">Wapas Jayein</button>
+</div>
+
+<div id="reportSection" class="container" style="max-width: 90%; width: 90%;">
+    <h2>Pichli Tamam Reports</h2>
+    <iframe src="https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID_HERE/pubhtml?widget=true&amp;headers=false"></iframe>
+    <br><br>
+    <button class="btn-main" style="background: #e74c3c; color:white;" onclick="location.reload()">Close Report</button>
+</div>
+
+<script>
+    function showSection(type) {
+        document.getElementById('welcome').style.display = 'none';
+        if(type === 'form') {
+            document.getElementById('feedbackFormContainer').style.display = 'block';
+        } else {
+            document.getElementById('reportSection').style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
 	
 <div id="main-survey-container" style="display: none;">
     </div>
@@ -200,4 +221,5 @@ style="margin-top: 20px; text-align: center;">
 </body>
 
 </html>
+
 
