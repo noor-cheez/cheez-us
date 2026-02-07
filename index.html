@@ -3,227 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaiqa Feedback & Reports</title>
+    <title>Customer Survey Form</title>
     <style>
-        :root { --primary: #0097a7; --bg: #f4f7f6; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; text-align: center; }
-        
-        /* Welcome Screen */
-        #welcome {
-            position: fixed; top:0; left:0; width:100%; height:100%;
-            background: linear-gradient(45deg, #0097a7, #006064);
-            display: flex; flex-direction: column; justify-content: center;
-            align-items: center; color: white; z-index: 1000;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            color: #333;
         }
-
-        .btn-main {
-            padding: 15px 40px; border-radius: 50px; border: none; 
-            font-weight: bold; cursor: pointer; margin: 10px; width: 250px; font-size: 16px;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
-        /* Report Section */
-        #reportSection { display: none; padding: 20px; }
-        iframe { width: 100%; height: 500px; border: 1px solid #ccc; border-radius: 10px; }
-
-        /* Form Container */
-        .container { max-width: 600px; margin: 20px auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); display: block; }
-        #feedbackFormContainer { display: none; }
+        h2, p {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 5px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+            font-weight: bold;
+        }
+        .section-title {
+            background-color: #f8f8f8;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .input-group {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box; /* Fix for mobile width */
+            margin-bottom: 15px;
+        }
+        .info-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .info-row input {
+            flex: 1;
+            min-width: 200px;
+        }
+        button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
 
-<div id="welcome">
-    <div style="font-size: 60px;">🍽️</div>
-    <h1>CHEEZ-US</h1>
-    <p>Apka Feedback Hamari Taqat Hai</p>
-    
-    <button class="btn-main" style="background: white; color: var(--primary);" onclick="showSection('form')">Feedback</button>
-    <button class="btn-main" style="background: transparent; color: white; border: 2px solid white;" onclick="showSection('report')">Report</button>
-</div>
-
-<div id="feedbackFormContainer" class="container">
-    <h2>Feedback Form</h2>
-    <p>Yahan apni raye darj karein...</p>
-    <button class="btn-main" style="background: var(--primary); color:white;" onclick="location.reload()">Home</button>
-</div>
-
-<div id="reportSection" class="container" style="max-width: 90%; width: 90%;">
-    <h2>Feedback Reports</h2>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTvs670SYIastEtkEnfK3F5_QkF_QbjwacR-3ovk0v0zcgM5R3f-xP79heRdEXCPZoXaw_GB2mdD1CU/pubhtml"></iframe>
-    <br><br>
-    <button class="btn-main" style="background: #e74c3c; color:white;" onclick="location.reload()">Close Report</button>
-</div>
-
-<script>
-    function showSection(type) {
-        document.getElementById('welcome').style.display = 'none';
-        if(type === 'form') {
-            document.getElementById('feedbackFormContainer').style.display = 'block';
-        } else {
-            document.getElementById('reportSection').style.display = 'block';
-        }
-    }
-</script>
-
-</body>
-</html>
-	
-<div id="main-survey-container" style="display: none;">
-    </div>
-
-<script>
-    // Ye function Welcome screen ko khatam karke Survey dikhayega
-    function startSurvey() {
-        // Welcome screen ko fade out karna
-        const welcome = document.getElementById('welcome-screen');
-        welcome.style.opacity = '0';
-        
-        setTimeout(() => {
-            welcome.style.display = 'none';
-            // Survey container ko dikhana
-            document.getElementById('main-survey-container').style.display = 'block';
-            // Call button wala section bhi display ho jayega
-        }, 500);
-    }
-</script>
-
 <div class="container">
-    <h1>Thank You For dining with us!</h1>
-    <p>Please take a moment to fill out the survey below. Your feedback will help us improve so we can serve you better. We thank you for your business!</p>
-<table>
+    <h2>Customer Survey</h2>
+    <p>Please take a moment to fill out the survey below. Your feedback helps us serve you better!</p>
+
     <form id="surveyForm">
-        <div class="section-header">Service</div>
         <table>
-            <tr> <th></th> <th>Excellent</th> <th>Good</th> <th>Fair</th> <th>Poor</th> </tr>
-            <tr> <td>Friendliness</td> 
-                 <td class="radio-cell"><input type="radio" name="friendliness" value="Excellent"></td>
-                 <td class="radio-cell"><input type="radio" name="friendliness" value="Good"></td>
-                 <td class="radio-cell"><input type="radio" name="friendliness" value="Fair"></td>
-                 <td class="radio-cell"><input type="radio" name="friendliness" value="Poor"></td>
-            </tr>
-            <tr> <td>Speed</td> 
-                 <td class="radio-cell"><input type="radio" name="speed" value="Excellent"></td>
-                 <td class="radio-cell"><input type="radio" name="speed" value="Good"></td>
-                 <td class="radio-cell"><input type="radio" name="speed" value="Fair"></td>
-                 <td class="radio-cell"><input type="radio" name="speed" value="Poor"></td>
-            </tr>
-		  <tr> <td>Knowledgeability</td> 
-                 <td class="radio-cell"><input type="radio" name="Knowledgeability" value="Excellent"></td>
-                 <td class="radio-cell"><input type="radio" name="Knowledgeability" value="Good"></td>
-                 <td class="radio-cell"><input type="radio" name="Knowledgeability" value="Fair"></td>
-                 <td class="radio-cell"><input type="radio" name="Knowledgeability" value="Poor"></td>
-            </tr>
-
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Excellent</th>
+                    <th>Good</th>
+                    <th>Fair</th>
+                    <th>Poor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="5" class="section-title">Service</td></tr>
+                <tr>
+                    <td>Friendliness</td>
+                    <td><input type="radio" name="friendliness" value="4"></td>
+                    <td><input type="radio" name="friendliness" value="3"></td>
+                    <td><input type="radio" name="friendliness" value="2"></td>
+                    <td><input type="radio" name="friendliness" value="1"></td>
+                </tr>
+                <tr>
+                    <td>Speed</td>
+                    <td><input type="radio" name="speed" value="4"></td>
+                    <td><input type="radio" name="speed" value="3"></td>
+                    <td><input type="radio" name="speed" value="2"></td>
+                    <td><input type="radio" name="speed" value="1"></td>
+                </tr>
+                <tr><td colspan="5" class="section-title">Food</td></tr>
+                <tr>
+                    <td>Quality</td>
+                    <td><input type="radio" name="quality" value="4"></td>
+                    <td><input type="radio" name="quality" value="3"></td>
+                    <td><input type="radio" name="quality" value="2"></td>
+                    <td><input type="radio" name="quality" value="1"></td>
+                </tr>
+                <tr>
+                    <td>Taste</td>
+                    <td><input type="radio" name="taste" value="4"></td>
+                    <td><input type="radio" name="taste" value="3"></td>
+                    <td><input type="radio" name="taste" value="2"></td>
+                    <td><input type="radio" name="taste" value="1"></td>
+                </tr>
+            </tbody>
         </table>
 
-        <div class="section-header">Food</div>
-        <table>
-            <tr> <td>Quality</td> 
-                 <td class="radio-cell"><input type="radio" name="quality" value="Excellent"></td>
-                 <td class="radio-cell"><input type="radio" name="quality" value="Good"></td>
-                 <td class="radio-cell"><input type="radio" name="quality" value="Fair"></td>
-                 <td class="radio-cell"><input type="radio" name="quality" value="Poor"></td>
-            </tr>
-		  <tr> <td>Appearance</td> 
-                 <td class="radio-cell"><input type="radio" name="Appearance" value="Excellent"></td>
-                 <td class="radio-cell"><input type="radio" name="Appearance" value="Good"></td>
-                 <td class="radio-cell"><input type="radio" name="Appearance" value="Fair"></td>
-                 <td class="radio-cell"><input type="radio" name="Appearance" value="Poor"></td>
-            </tr>
+        <div class="input-group">
+            <label>Would you recommend us to friends and family?</label>
+            <input type="text" placeholder="Why or why not?">
+        </div>
 
-            <tr> <td>Taste</td> 
-                 <td class="radio-cell"><input type="radio" name="taste" value="Excellent"></td>
-                 <td class="radio-cell"><input type="radio" name="taste" value="Good"></td>
-                 <td class="radio-cell"><input type="radio" name="taste" value="Fair"></td>
-                 <td class="radio-cell"><input type="radio" name="taste" value="Poor"></td>
-            </tr>
-        </table>
+        <div class="input-group">
+            <label>Any Additional comments or Suggestions?</label>
+            <textarea rows="4" placeholder="Your feedback..."></textarea>
+        </div>
 
-        <div class="section-header">Atmosphere</div>
-        <table>
-            <tr> <td>Cleanliness</td> 
-                 <td class="radio-cell"><input type="radio" name="cleanliness" value="Excellent"></td>
-                 <td class="radio-cell"><input type="radio" name="cleanliness" value="Good"></td>
-                 <td class="radio-cell"><input type="radio" name="cleanliness" value="Fair"></td>
-                 <td class="radio-cell"><input type="radio" name="cleanliness" value="Poor"></td>
-            </tr>
-<tr> <td>Comfort</td> 
-                 <td class="radio-cell"><input type="radio" name="Comfort" value="Excellent"></td>
-                 <td class="radio-cell"><input type="radio" name="Comfort" value="Good"></td>
-                 <td class="radio-cell"><input type="radio" name="Comfort" value="Fair"></td>
-                 <td class="radio-cell"><input type="radio" name="Comfort" value="Poor"></td>
-            </tr>
-<tr> <td>Ambiance</td> 
-                 <td class="radio-cell"><input type="radio" name="Ambiance" value="Excellent"></td>
-                 <td class="radio-cell"><input type="radio" name="Ambiance" value="Good"></td>
-                 <td class="radio-cell"><input type="radio" name="Ambiance" value="Fair"></td>
-                 <td class="radio-cell"><input type="radio" name="Ambiance" value="Poor"></td>
-            </tr>
+        <div class="info-row">
+            <input type="text" placeholder="Name (Optional)">
+            <input type="text" placeholder="Phone Number">
+        </div>
 
-        </table>
-
-        <p><b>Would you recommend us to your friends and family?</b></p>
-        <input type="text" id="recommend" placeholder="Why or why not?">
-
-        <p><b>Any Additional comments or Suggestions?:</b></p>
-        <textarea id="comments" rows="3"></textarea>
-
-        <p><b>Your Information (Optional):</b></p>
-        <input type="text" id="custName" placeholder="Name">
-        <input type="text" id="custPhone" placeholder="Phone Number">
-
-        <button type="button" class="submit-btn" onclick="submitSurvey()">Submit Feedback</button>
+        <button type="submit">Submit Feedback</button>
     </form>
 </div>
-<div 
-style="margin-top: 20px; text-align: center;">
-    <p style="font-size: 14px; color: #666;">Koi masla hai? Humain call karein:</p>
-    <a href="tel:+923339375652" style="
-        display: inline-block;
-        background-color: #2ecc71;
-        color: white;
-        padding: 12px 25px;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: bold;
-        box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
-        font-size: 16px;
-    ">
-        📞 Call Now: 0333-9375652
-    </a>
-</div>
-
-<script>
-    function submitSurvey() {
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyU9xz3jpW7skyscwZ4Ni41FVIdeYxMza61EVW1HjO-_ovvTaBxT5Yve6ThpGY5Lv5coA/exec';
-        
-        const formData = {
-            friendliness: document.querySelector('input[name="friendliness"]:checked')?.value || "N/A",
-            speed: document.querySelector('input[name="speed"]:checked')?.value || "N/A",
-            quality: document.querySelector('input[name="quality"]:checked')?.value || "N/A",
-            taste: document.querySelector('input[name="taste"]:checked')?.value || "N/A",
-            cleanliness: document.querySelector('input[name="cleanliness"]:checked')?.value || "N/A",
-            recommend: document.getElementById('recommend').value,
-            comments: document.getElementById('comments').value,
-            name: document.getElementById('custName').value,
-            phone: document.getElementById('custPhone').value
-        };
-
-        fetch(scriptURL, { method: 'POST', body: JSON.stringify(formData) })
-        .then(res => {
-            alert("Thank you! Data saved & Email sent.");
-            location.reload();
-        })
-        .catch(err => alert("Error saving data."));
-    }
-</script>
 
 </body>
-
 </html>
-
-
-
-
-
-
