@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaiqa Feedback</title>
+    <title>CHEEZ-US</title>
     <style>
         :root { --primary: #0097a7; --bg: #f4f7f6; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; }
@@ -45,8 +45,8 @@
 
 <div id="welcome">
     <div style="font-size: 50px;">🌟</div>
-    <h1>Khayal Apka, Zaiqa Hamara!</h1>
-    <p>Apna qeemti feedback share karke hamari khidmat ka hissa banein.</p>
+    <h1>CHEEZ-US</h1>
+    <p>Please take a moment to fill out the survey below. Your feedback will help us improve so we can serve you better. We thank you for your business!.</p>
     <button onclick="document.getElementById('welcome').style.display='none'" style="padding: 15px 40px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer;">Shuru Karein</button>
 </div>
 
@@ -54,21 +54,31 @@
     <h2 style="text-align: center; color: #333;">Feedback Form</h2>
     
     <form id="feedbackForm">
-        <div class="header-box">Khidmat (Service)</div>
+        <div class="header-box">Service</div>
         <table>
             <tr><th>Item</th><th>Excl</th><th>Good</th><th>Fair</th><th>Poor</th></tr>
             <tr><td>Friendliness</td><td><input type="radio" name="f" value="4"></td><td><input type="radio" name="f" value="3"></td><td><input type="radio" name="f" value="2"></td><td><input type="radio" name="f" value="1"></td></tr>
             <tr><td>Speed</td><td><input type="radio" name="s" value="4"></td><td><input type="radio" name="s" value="3"></td><td><input type="radio" name="s" value="2"></td><td><input type="radio" name="s" value="1"></td></tr>
+             <tr><td>Knowledgeability</td><td><input type="radio" name="s" value="4"></td><td><input type="radio" name="s" value="3"></td><td><input type="radio" name="s" value="2"></td><td><input type="radio" name="s" value="1"></td></tr>
+        </table>
+        
+        <div class="header-box">Food</div>
+        <table>
+            <tr><td>Quality</td><td><input type="radio" name="f" value="4"></td><td><input type="radio" name="f" value="3"></td><td><input type="radio" name="f" value="2"></td><td><input type="radio" name="f" value="1"></td></tr>
+            <tr><td>Appearance</td><td><input type="radio" name="s" value="4"></td><td><input type="radio" name="s" value="3"></td><td><input type="radio" name="s" value="2"></td><td><input type="radio" name="s" value="1"></td></tr>
+             <tr><td>Taste</td><td><input type="radio" name="s" value="4"></td><td><input type="radio" name="s" value="3"></td><td><input type="radio" name="s" value="2"></td><td><input type="radio" name="s" value="1"></td></tr>
         </table>
 
-        <div class="header-box">Mahol (Atmosphere)</div>
+        <div class="header-box">Atmosphere</div>
         <table>
             <tr><td>Cleanliness</td><td><input type="radio" name="c" value="4"></td><td><input type="radio" name="c" value="3"></td><td><input type="radio" name="c" value="2"></td><td><input type="radio" name="c" value="1"></td></tr>
+            <tr><td>Comfort</td><td><input type="radio" name="c" value="4"></td><td><input type="radio" name="c" value="3"></td><td><input type="radio" name="c" value="2"></td><td><input type="radio" name="c" value="1"></td></tr>
+            <tr><td>Ambiance</td><td><input type="radio" name="c" value="4"></td><td><input type="radio" name="c" value="3"></td><td><input type="radio" name="c" value="2"></td><td><input type="radio" name="c" value="1"></td></tr>
         </table>
 
-        <input type="text" id="custName" placeholder="Aapka Naam">
+        <input type="text" id="custName" placeholder="Your Name">
         <input type="text" id="custPhone" placeholder="Phone Number">
-        <textarea id="msg" placeholder="Mazeed raye (Optional)"></textarea>
+        <textarea id="msg" placeholder="Comments (Optional)"></textarea>
 
         <button type="button" class="btn-submit" onclick="sendData()">Submit Feedback</button>
         
@@ -80,7 +90,7 @@
 
 <script>
     function sendData() {
-        alert("Shukriya! Data save ho gaya aur Email bhej di gayi.");
+        alert("Thank You! for your feedback.");
         location.reload();
     }
 </script>
@@ -174,5 +184,6 @@
 
 </body>
 </html>
+
 
 
